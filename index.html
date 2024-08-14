@@ -1,0 +1,299 @@
+<html>
+    <head>
+        <style>
+            body {margin: 0;}
+            p {align-self: center;}
+            .button {user-select: none; background: linear-gradient(#8900CD, #D685FF); color: #fff; font-size: 20pt; border-radius: 1rem; display: flex; flex-direction: row; padding: 0.5rem 1rem 0.5rem 1rem;}
+            .button:hover {background: linear-gradient(#007F89, #47F2FF);}
+            .button-checked {background: linear-gradient(#007F89, #47F2FF);}
+        </style>
+        <script>
+            selected = ['', '', '', ''];
+            function clicked(item) {
+                if(selected[parseInt(item[0])-1] == item) {
+                    document.getElementById('button' + selected[parseInt(item[0])-1] + '-checked').style.display = 'none';
+                    document.getElementById('button' + selected[parseInt(item[0])-1]).classList.remove('button-checked');
+                    selected[parseInt(item[0])-1] = '';
+                }
+                else {
+                    if (selected[parseInt(item[0])-1] != '')  {
+                        document.getElementById('button' + selected[parseInt(item[0])-1] + '-checked').style.display = 'none';
+                        document.getElementById('button' + selected[parseInt(item[0])-1]).classList.remove('button-checked');
+                    }
+                    selected[parseInt(item[0])-1] = item;
+                    document.getElementById('button' + selected[parseInt(item[0])-1] + '-checked').style.display = 'inherit';
+                    document.getElementById('button' + selected[parseInt(item[0])-1]).classList.add('button-checked');
+                }
+                if(selected[0]=='1c' && selected[2]=='3b') {
+                    document.getElementById('q4q').style.display = 'inherit';
+                    document.getElementById('q4s1').style.display = 'inherit';
+                    document.getElementById('q4s2').style.display = 'none';
+                    document.getElementById('q4s3').style.display = 'none';
+                }
+                else if(selected[0]=='1d' && selected[1] == '2a' && selected[2]=='3b') {
+                    document.getElementById('q4q').style.display = 'inherit';
+                    document.getElementById('q4s1').style.display = 'none';
+                    document.getElementById('q4s2').style.display = 'inherit';
+                    document.getElementById('q4s3').style.display = 'none';
+                }
+                else if(selected[0]=='1d' && selected[1] == '2b' && selected[2]=='3b') {
+                    document.getElementById('q4q').style.display = 'inherit';
+                    document.getElementById('q4s1').style.display = 'none';
+                    document.getElementById('q4s2').style.display = 'none';
+                    document.getElementById('q4s3').style.display = 'inherit';
+                }
+                else {
+                    document.getElementById('q4q').style.display = 'none';
+                    document.getElementById('q4s1').style.display = 'none';
+                    document.getElementById('q4s2').style.display = 'none';
+                    document.getElementById('q4s3').style.display = 'none';
+                }
+
+                if(selected[0] != '' && selected[1] != '' && selected[2] != '') {
+                    sid = (selected[0].charCodeAt(1) - 'a'.charCodeAt(0)) * 9 + (selected[1].charCodeAt(1) - 'a'.charCodeAt(0)) * 3 + (selected[2].charCodeAt(1) - 'a'.charCodeAt(0));
+                    switch(sid) {
+                        case 0: case 1: case 2: case 3: case 4: case 5:
+                            document.getElementById('contents').src = 'contents/table1.html';
+                            break;
+                        case 6: case 7: case 8:
+                            document.getElementById('contents').src = 'contents/table1n.html';
+                            break;
+                        case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17:
+                            document.getElementById('contents').src = 'contents/table0.html';
+                            break;
+                        case 18: case 21:
+                            document.getElementById('contents').src = 'contents/table2a.html';
+                            break;
+                        case 24:
+                            document.getElementById('contents').src = 'contents/table2b.html';
+                            break;
+                        case 27: case 30:
+                            document.getElementById('contents').src = 'contents/table2am.html';
+                            break;
+                        case 33:
+                            document.getElementById('contents').src = 'contents/table2bm.html';
+                            break;
+                        case 19: case 22:
+                            switch(selected[3]) {
+                                case '4a':
+                                    document.getElementById('contents').src = 'contents/table2a.html';
+                                    break;
+                                case '4b':
+                                    document.getElementById('contents').src = 'contents/table2c.html';
+                                    break;
+                                case '4c':
+                                    document.getElementById('contents').src = 'contents/table2d.html';
+                                    break;
+                                case '4d':
+                                    document.getElementById('contents').src = 'contents/table2e.html';
+                                    break;
+                                default:
+                                    document.getElementById('contents').src = 'contents/blank.html';
+                                    break;
+                            }
+                            break;
+                        case 25:
+                            switch(selected[3]) {
+                                case '4a':
+                                    document.getElementById('contents').src = 'contents/table2am.html';
+                                    break;
+                                case '4b':
+                                    document.getElementById('contents').src = 'contents/table2cm.html';
+                                    break;
+                                case '4c':
+                                    document.getElementById('contents').src = 'contents/table2dm.html';
+                                    break;
+                                case '4d':
+                                    document.getElementById('contents').src = 'contents/table2em.html';
+                                    break;
+                                default:
+                                    document.getElementById('contents').src = 'contents/blank.html';
+                                    break;
+                            }
+                            break;
+                        case 28:
+                            switch(selected[3]) {
+                                case '4e':
+                                    document.getElementById('contents').src = 'contents/table3b.html';
+                                    break;
+                                case '4f':
+                                    document.getElementById('contents').src = 'contents/table3c.html';
+                                    break;
+                                default:
+                                    document.getElementById('contents').src = 'contents/blank.html';
+                                    break;
+                            }
+                            break;
+                        case 31:
+                            switch(selected[3]) {
+                                case '4g':
+                                    document.getElementById('contents').src = 'contents/table3a.html';
+                                    break;
+                                case '4h':
+                                    document.getElementById('contents').src = 'contents/table3d.html';
+                                    break;
+                                default:
+                                    document.getElementById('contents').src = 'contents/blank.html';
+                                    break;
+                            }
+                            break;
+                        case 20: case 23: case 29: case 32:
+                            document.getElementById('contents').src = 'contents/table4.html';
+                            break;
+                        case 26:
+                            document.getElementById('contents').src = 'contents/table4m.html';
+                            break;
+                        case 34: case 35:
+                            document.getElementById('contents').src = 'contents/table1n.html';
+                            break;
+                    }
+                } else {
+                    document.getElementById('contents').src = 'contents/blank.html';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div style="margin: auto; height: 100%;">
+            <div style="display: flex; flex-direction: row; height: 100%;">
+                <div style="width: 45%; height: 100%;">
+                    <h1 style="user-select: none; height: 3rem; margin: 0; background: linear-gradient(#00284C, #118FFF); color: #FFF;padding-left: 1rem;">Questions</h1>
+                    <div style="height: calc(100% - 3rem); overflow-y: scroll; padding-left: 1rem; padding-right: 1rem;">
+                        <h2>Q1. 어떤 IPG를 사용하십니까?</h2>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div id="button1a" onclick="clicked('1a')" class="button">
+                                <img id="button1a-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <p style="margin-left: 0.5rem;">리드만 삽입함</p>
+                            </div>
+                            <div id="button1b" onclick="clicked('1b')" class="button">
+                                <img id="button1b-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <img src="images/pc.png" style="height: 5rem;"></img>
+                                <p style="margin-left: 1rem;">Vercise™ PC</p>
+                            </div>
+                            <div id="button1c" onclick="clicked('1c')" class="button">
+                                <img id="button1c-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <img src="images/genus1.png" style="height: 5rem;"></img>
+                                <img src="images/genus2.png" style="height: 5rem; margin-left: 0.5rem"></img>
+                                <p style="margin-left: 1rem;">Vercise™ Genus</p>
+                            </div>
+                            <div id="button1d" onclick="clicked('1d')" class="button">
+                                <img id="button1d-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <img src="images/gevia.png" style="height: 5rem;"></img>
+                                <p style="margin-left: 1rem;">Vercise™ Gevia</p>
+                            </div>
+                        </div>
+                        <h2>Q2. 어떤 리드를 사용하십니까?</h2>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div id="button2a" onclick="clicked('2a')" class="button">
+                                <img id="button2a-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <img src="images/ring.png" style="height: 5rem;"></img>
+                                <div style="margin-left: 1rem;">
+                                    <p style="margin-top: 1rem; margin-bottom: 0;">Vercise™</p>
+                                    <p style="margin-top: 0; margin-bottom: 1rem;">Standard Lead</p>
+                                </div>
+                            </div>
+                            <div id="button2b" onclick="clicked('2b')" class="button">
+                                <img id="button2b-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <img src="images/directional.png" style="height: 5rem;"></img>
+                                <div style="margin-left: 1rem;">
+                                    <p style="margin-top: 1rem; margin-bottom: 0;">Vercise™ Cartesia™</p>
+                                    <p style="margin-top: 0; margin-bottom: 1rem;">Directional Lead</p>
+                                </div>
+                            </div>
+                            <div id="button2c" onclick="clicked('2c')" class="button">
+                                <img id="button2c-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                <div style="margin-left: 0.5rem;">
+                                    <p style="margin-top: 1rem; margin-bottom: 0;">타사 리드</p>
+                                    <p style="margin-top: 0; margin-bottom: 1rem;">(Hybrid replacement)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Q3. 어떤 코일로 촬영하십니까?</h2>
+                        <div>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div id="button3a" onclick="clicked('3a')" class="button">
+                                    <img id="button3a-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/head.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">Head</p>
+                                </div>
+                                <div id="button3b" onclick="clicked('3b')" class="button">
+                                    <img id="button3b-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/body.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">Body</p>
+                                </div>
+                                <div id="button3c" onclick="clicked('3c')" class="button">
+                                    <img id="button3c-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/le.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">Lower Extremity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="q4q" style="display: none">Q4. 어떤 신체를 촬영하십니까?</h2>
+                        <div id="q4s1" style="display: none">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div id="button4a" onclick="clicked('4a')" class="button">
+                                    <img id="button4a-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/A.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">C2 또는 C2 위</p>
+                                </div>
+                                <div id="button4b" onclick="clicked('4b')" class="button">
+                                    <img id="button4b-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/B.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">C3에서 T10까지</p>
+                                </div>
+                                <div id="button4c" onclick="clicked('4c')" class="button">
+                                    <img id="button4c-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/C.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">T11에서 대퇴골까지</p>
+                                </div>
+                                <div id="button4d" onclick="clicked('4d')" class="button">
+                                    <img id="button4d-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/D.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">무릎부터 그 아래</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="q4s2" style="display: none">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div id="button4e" onclick="clicked('4e')" class="button">
+                                    <img id="button4e-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/E.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">T5 위</p>
+                                </div>
+                                <div id="button4f" onclick="clicked('4f')" class="button">
+                                    <img id="button4f-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/F.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">T5 또는 T5 아래</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="q4s3" style="display: none">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div id="button4g" onclick="clicked('4g')" class="button">
+                                    <img id="button4g-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/G.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">T12 위</p>
+                                </div>
+                                <div id="button4h" onclick="clicked('4h')" class="button">
+                                    <img id="button4h-checked" src="images/checked.png" style="height: 3rem; align-self: center; margin-right: 1rem; display: none;"></img>
+                                    <img src="images/H.png" style="height: 8rem;"></img>
+                                    <p style="margin-left: 1rem;">T12 또는 T12 아래</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 1rem;"></div>
+                    </div>
+                </div>
+                <div style="width: 10%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <img src="images/bsc_arrow.svg"></img>
+                </div>
+                <div style="width: 45%; height: 100%;">
+                    <h1 style="user-select: none; height: 3rem; margin: 0; background: linear-gradient(#00284C, #118FFF); color: #FFF;padding-left: 1rem;">Answers</h1>
+                    <div style="height: calc(100% - 3rem); overflow-y: scroll;">
+                        <embed id="contents" type="text/html" src="contents/blank.html" style="width: 100%; height: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
